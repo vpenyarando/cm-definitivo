@@ -13,13 +13,10 @@ import java.util.Scanner;
  */
 public class Practica1 {
 
-    /**
-     * @param args the command line arguments
-     */
+    static Scanner sc = new Scanner (System.in);
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         double res = 0;
-        String operacion;
+        String operacion = "";
         boolean comprobar = false;
 
         do {
@@ -32,20 +29,7 @@ public class Practica1 {
             double nume1 = Double.parseDouble(numero1);
             double n1 = new Double(numero1);
 
-            do {
-                System.out.println("\n Operació? (Indica el signe)");
-                System.out.println("+ = sumar \n - = restar \n"
-                        + " x = multiplicar \n / = dividir \n * = elevar primer num al segon num."
-                        + "\n % = residu");
-                operacion = sc.nextLine();
-                if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
-                        || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
-                        || operacion.equals("*")) {
-                    comprobar = true;
-                } else {
-                    comprobar = false;
-                }
-            } while (comprobar != true);
+            operacion = demanaOperacio(operacion, comprobar);
 
             String numero2;
             do {
@@ -118,4 +102,23 @@ public class Practica1 {
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
     }
+
+    public static String demanaOperacio(String operacion, boolean comprobar) {
+        do {
+                System.out.println("\n Operació? (Indica el signe)");
+                System.out.println("+ = sumar \n - = restar \n"
+                        + " x = multiplicar \n / = dividir \n * = elevar primer num al segon num."
+                        + "\n % = residu");
+                operacion = sc.nextLine();
+                if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
+                        || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
+                        || operacion.equals("*")) {
+                    comprobar = true;
+                } else {
+                    comprobar = false;
+                }
+            } while (comprobar != true);
+        return operacion;
+    }
 }
+
